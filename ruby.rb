@@ -16,7 +16,25 @@ puts 合計
 ②定価　× 割引率　＝割引金額
 ③定価　ー　割引金額　＝商品代金
 ④合計 += 商品代金
-⑤くり返す
-
+⑤くり返す商品代金が２以上の間は繰り返す
 =end 
 
+#コーヒー代金
+coffee = gets.to_i
+#割引割合
+discount_rate = gets.to_i
+#いくらで次のコーヒー無料になるのか
+total = 0
+#割引金額
+discounted_price= coffee *(discount_rate.to_f / 100)
+#割引後金額
+price = coffee - discounted_price.floor
+#合計金額に割引後金額代入
+total += coffee
+
+until price < 1
+total += price
+new_discount = price * (discount_rate.to_f / 100)
+price = price - new_discount
+end 
+puts total.floor
